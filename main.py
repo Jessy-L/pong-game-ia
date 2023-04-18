@@ -5,7 +5,6 @@ import neat
 import os
 import time
 import pickle
-import visualize
 
 
 class PongGame:
@@ -16,9 +15,7 @@ class PongGame:
         self.right_paddle = self.game.right_paddle
 
     def test_ai(self, net):
-        """
-        Testez l'IA contre un joueur humain en passant un réseau neuronal NEAT
-        """
+        #Testez l'IA contre un joueur humain en passant un réseau neuronal NEAT
         clock = pygame.time.Clock()
         run = True
         while run:
@@ -49,10 +46,8 @@ class PongGame:
             pygame.display.update()
 
     def train_ai(self, genome1, genome2, config, draw=False):
-        """
-        Entraînez l'IA en passant deux réseaux neuronaux NEAT et l'objet de configuration NEAt.
-        Ces IA s'affronteront pour déterminer leur aptitude.
-        """
+        #Entraînez l'IA en passant deux réseaux neuronaux NEAT et l'objet de configuration NEAt.
+        #Ces IA s'affronteront pour déterminer leur aptitude.
         run = True
         start_time = time.time()
 
@@ -85,9 +80,8 @@ class PongGame:
         return False
 
     def move_ai_paddles(self, net1, net2):
-        """        
-        Déterminez où déplacer la raquette gauche et la raquette droite en fonction des deux réseaux neuronaux qui les contrôlent.
-        """
+              
+        # Déterminez où déplacer la raquette gauche et la raquette droite en fonction des deux réseaux neuronaux qui les contrôlent.
         players = [(self.genome1, net1, self.left_paddle, True), (self.genome2, net2, self.right_paddle, False)]
         for (genome, net, paddle, left) in players:
             output = net.activate(
@@ -111,9 +105,7 @@ class PongGame:
 
 
 def eval_genomes(genomes, config):
-    """
-    Exécutez chaque génome contre chaque autre une fois pour déterminer la fitness.
-    """
+    # Exécutez chaque génome contre chaque autre une fois pour déterminer la fitness.
     width, height = 700, 500
     win = pygame.display.set_mode((width, height))
     pygame.display.set_caption("Pong")

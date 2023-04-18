@@ -14,13 +14,13 @@ class GameInformation:
 
 
 class Game:
-    """
-    Pour utiliser cette classe, initialisez simplement une instance et appelez la méthode .loop()
-    à l'intérieur d'une boucle d'événements pygame (c'est-à-dire une boucle while). À l'intérieur de votre boucle d'événements
-    vous pouvez appeler les méthodes .draw() et .move_paddle() selon votre cas d'utilisation.
-    Utilisez les informations renvoyées par .loop() pour déterminer quand terminer le jeu en appelant
-    .reset().
-    """
+    
+    # Pour utiliser cette classe, initialisez simplement une instance et appelez la méthode .loop()
+    # à l'intérieur d'une boucle d'événements pygame (c'est-à-dire une boucle while). À l'intérieur de votre boucle d'événements
+    # vous pouvez appeler les méthodes .draw() et .move_paddle() selon votre cas d'utilisation.
+    # Utilisez les informations renvoyées par .loop() pour déterminer quand terminer le jeu en appelant
+    # .reset().
+    
     SCORE_FONT = pygame.font.SysFont("comicsans", 50)
     WHITE = (255, 255, 255)
     BLACK = (0, 0, 0)
@@ -116,12 +116,10 @@ class Game:
         self.ball.draw(self.window)
 
     def move_paddle(self, left=True, up=True):
-        """
         # deplace la raquette gauche ou droite
         # :returns: boolean indiquant si le mouvement est valide.
         # Le mouvement est invalide si il fait sortir la raquette
         # de l'ecran
-        """
         if left:
             if up and self.left_paddle.y - Paddle.VEL < 0:
                 return False
@@ -138,11 +136,9 @@ class Game:
         return True
 
     def loop(self):
-        """
         # execute une boucle de jeu
         # :returns: instance de GameInformation indiquant le score
         # et les coups de chaque raquette.
-        """
         self.ball.move()
         self._handle_collision()
 
@@ -159,7 +155,7 @@ class Game:
         return game_info
 
     def reset(self):
-        """Reset TOUTE LA game."""
+        #Reset TOUTE LA game.
         self.ball.reset()
         self.left_paddle.reset()
         self.right_paddle.reset()
